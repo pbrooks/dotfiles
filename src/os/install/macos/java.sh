@@ -6,14 +6,9 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-print_in_purple "\n   Git\n\n"
-
-brew_install "Git" "git"
-brew_install "Git LFS" "git-lfs"
-brew_install "hub" "hub"
+print_in_purple "\n   java\n\n"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 printf "\n"
-
-brew_install "Git Kraken" "gitkraken" "caskroom/cask" "cask"
+brew_install "Java" "java" "caskroom/cask" "cask"

@@ -6,6 +6,10 @@ declare -r DOTFILES_ORIGIN="git@github.com:$GITHUB_REPOSITORY.git"
 declare -r DOTFILES_TARBALL_URL="https://github.com/$GITHUB_REPOSITORY/tarball/master"
 declare -r DOTFILES_UTILS_URL="https://raw.githubusercontent.com/$GITHUB_REPOSITORY/master/src/os/utils.sh"
 
+if [ -n "$GITHUB_REPOSITORY_LOCAL" ]; then
+    declare -r DOTFILES_LOCAL_REPOSITORY_URL="git@github.com:$GITHUB_REPOSITORY_LOCAL.git"
+fi
+
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 declare dotfilesDirectory="$HOME/.dotfiles"
@@ -117,6 +121,35 @@ download_dotfiles() {
 
 }
 
+download_dotfiles_local() {
+
+    print_in_purple "\n • Download and extract local dotfiles\n\n"
+
+    if [ -z "$DOTFILES_LOCAL_REPOSITORY_URL" ]; then
+        print_result 1 "No local dotfiles specified"
+        return 1
+    fi
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    local tmpFile=""
+
+    tmpFile="$(mktemp -d /tmp/XXXXX)"
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    git clone $DOTFILES_LOCAL_REPOSITORY_URL $tmpFile &> /dev/null
+    print_result $? "Download local copy of repository"
+
+    cp -r $tmpFile/src/* ../local
+    print_result $? "Copy files into place"
+
+    rm -rf $tmpFile
+    print_result $? "Remove archive"
+
+    return 0
+}
+
 download_utils() {
 
     local tmpFile=""
@@ -196,6 +229,17 @@ verify_os() {
 
 }
 
+get_host_name() {
+
+    if [ -n "${HOST_NAME}" ]; then
+        printf "%s" "$HOST_NAME"
+        return 0
+    fi
+
+    printf "%s" "$(hostname)"
+
+}
+
 # ----------------------------------------------------------------------
 # | Main                                                               |
 # ----------------------------------------------------------------------
@@ -262,10 +306,6 @@ main() {
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    ./preferences/main.sh
-
-    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
     if cmd_exists "git"; then
 
         if [ "$(git config --get remote.origin.url)" != "$DOTFILES_ORIGIN" ]; then
@@ -278,6 +318,30 @@ main() {
             ./update_content.sh
         fi
 
+        # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+        download_dotfiles_local
+
+    fi
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    if [ -e ../local/vars/hosts/$(get_serial).sh ]; then
+        . "../local/vars/hosts/$(get_serial).sh"
+    fi
+    declare HOSTNAME="$(get_host_name)"
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    ./set_ssh_key.sh $HOSTNAME
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    ./preferences/main.sh
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    if [ -n ../local/os/setup.sh ]; then
+        ../local/os/setup.sh
     fi
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

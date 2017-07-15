@@ -33,7 +33,7 @@ create_gitconfig_local() {
     # Sign commits using GPG.
     # https://help.github.com/articles/signing-commits-using-gpg/
 
-    # gpgsign = true
+    gpgsign = true
 
 
 [user]

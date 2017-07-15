@@ -6,7 +6,7 @@
     ca  = !git add -A && git commit             # Commit all changes.
     co  = checkout
     cp  = cherry-pick
-    d   = diff
+    di   = diff
     dc  = diff --cached
     f   = fetch
     g   = log --graph --pretty=custom           # Show custom graph.
@@ -15,7 +15,7 @@
     p   = push
     r   = rebase
     rlc = reset --hard HEAD~1                   # Remove last commit.
-    s   = status
+    st  = status
     ulc = reset --soft HEAD~1                   # Undo last commit.
     w   = instaweb --httpd=webrick              # Start web-based visualizer.
 
