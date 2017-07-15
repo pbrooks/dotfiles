@@ -15,11 +15,15 @@ endif
 
 set autoindent                      " Copy indent to the new line.
 
+<<<<<<< HEAD
 set backspace=indent                " ┐
 set backspace+=eol                  " │ Allow `backspace`
 set backspace+=start                " ┘ in insert mode.
 
 set backupdir=~/.vim/backups        " Set directory for backup files.
+=======
+set backupdir=~/.vim/backups   " Set directory for backup files.
+>>>>>>> pbrooks base
 
 if has('wildignore')
     set backupskip=/tmp/*           " ┐ Don't create backups
@@ -37,10 +41,18 @@ set cpoptions+=$                    " When making a change, don't
                                     " put a `$` sign at the end of
                                     " the changed text.
 
+<<<<<<< HEAD
 if has('syntax')
     set colorcolumn=73              " Highlight certain column(s).
     set cursorline                  " Highlight the current line.
 endif
+=======
+set directory=~/.vim/swaps     " Set directory for swap files.
+set encoding=utf-8 nobomb      " Use UTF-8 without BOM.
+set history=5000               " Increase command line history.
+set hlsearch                   " Enable search highlighting.
+set ignorecase                 " Ignore case in search patterns.
+>>>>>>> pbrooks base
 
 set directory=~/.vim/swaps          " Set directory for swap files.
 set encoding=utf-8 nobomb           " Use UTF-8 without BOM.
@@ -107,6 +119,7 @@ if has('cmdline_info')
     set showcmd                     " Show the command being typed.
 endif
 
+<<<<<<< HEAD
 set showmode                        " Show current mode.
 
 if has('syntax')
@@ -279,34 +292,35 @@ inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
 inoremap <S-TAB> <C-V><TAB>
 
+=======
+set runtimepath+=~/.vim/plugins/Shougo/dein.vim
+
+call dein#begin("~/.vim/plugins")
+call dein#add('Shougo/dein.vim')
+call dein#add('scrooloose/nerdtree')
+call dein#add('scrooloose/syntastic')
+call dein#add('Shougo/unite.vim')
+call dein#add('Shougo/vimfiler.vim')
+call dein#add('Shougo/vimproc.vim', {'build' : 'make -f make_mac.mak'})
+call dein#add('nvie/vim-flake8')
+call dein#add('mileszs/ack.vim')
+call dein#add('vim-airline/vim-airline')
+call dein#add('ryanoasis/vim-devicons')
+call dein#end()
+filetype plugin indent on
+if dein#check_install()
+  call dein#install()
+endif
+
+>>>>>>> pbrooks base
 " ----------------------------------------------------------------------
-" | Plugins - Signify                                                  |
+" | Plugin - flake8                                                    |
 " ----------------------------------------------------------------------
 
-" Disable Signify by default.
-" https://github.com/mhinz/vim-signify
-
-let g:signify_disable_by_default=1
-
-
-" ----------------------------------------------------------------------
-" | Plugins - Syntastic                                                |
-" ----------------------------------------------------------------------
-
-" Inform Syntastic which checkers to use based on file types.
-" https://github.com/scrooloose/syntastic#faq
-
-let g:syntastic_javascript_checkers = [ 'eslint' ]
-
-" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-" Disable syntax checking by default.
-
-let g:syntastic_mode_map = {
-    \ "active_filetypes": [],
-    \ "mode": "passive",
-    \ "passive_filetypes": []
-\}
+autocmd BufWritePost *.py call Flake8()
+let g:flake8_show_in_file=1
+let g:flake8_show_quickfix=0
+let g:flake8_show_in_gutter=1
 
 
 " ----------------------------------------------------------------------
@@ -372,18 +386,6 @@ function! ToggleLimits()
 
 endfunction
 
-" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-function! ToggleRelativeLineNumbers()
-
-    if ( &relativenumber == 1 )
-        set number
-    else
-        set relativenumber
-    endif
-
-endfunction
-
 
 " ----------------------------------------------------------------------
 " | Automatic Commands                                                 |
@@ -403,46 +405,6 @@ if has("autocmd")
 
         autocmd!
         autocmd BufWritePost vimrc source $MYVIMRC
-
-    augroup END
-
-    " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-    " Use relative line numbers.
-    " http://jeffkreeftmeijer.com/2012/relative-line-numbers-in-vim-for-super-fast-movement/
-
-    augroup relative_line_numbers
-
-        autocmd!
-
-        " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-        " Automatically switch to absolute
-        " line numbers when Vim loses focus.
-
-        autocmd FocusLost * :set number
-
-        " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-        " Automatically switch to relative
-        " line numbers when Vim gains focus.
-
-        autocmd FocusGained * :set relativenumber
-
-        " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-        " Automatically switch to absolute
-        " line numbers when Vim is in insert mode.
-
-        autocmd InsertEnter * :set number
-
-        " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-        " Automatically switch to relative
-        " line numbers when Vim is in normal mode.
-
-        autocmd InsertLeave * :set relativenumber
-
 
     augroup END
 
@@ -470,6 +432,7 @@ if has("autocmd")
 
 endif
 
+<<<<<<< HEAD
 
 " ----------------------------------------------------------------------
 " | Color Scheme                                                       |
@@ -494,10 +457,13 @@ endif
 
 silent! colorscheme solarized  " Use custom color scheme.
 
+=======
+>>>>>>> pbrooks base
 " ----------------------------------------------------------------------
 " | Key Mappings                                                       |
 " ----------------------------------------------------------------------
 
+<<<<<<< HEAD
 " Use a different mapleader (default is "\").
 
 let mapleader = ","
@@ -602,74 +568,11 @@ nmap <leader>v :vsp $MYVIMRC<CR>
 
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+=======
+>>>>>>> pbrooks base
 " [,W ] Sudo write.
 
 map <leader>W :w !sudo tee %<CR>
-
-
-" ----------------------------------------------------------------------
-" | Status Line                                                        |
-" ----------------------------------------------------------------------
-
-" Terminal types:
-"
-"   1) term  (normal terminals, e.g.: vt100, xterm)
-"   2) cterm (color terminals, e.g.: MS-DOS console, color-xterm)
-"   3) gui   (GUIs)
-
-highlight ColorColumn
-    \ term=NONE
-    \ cterm=NONE  ctermbg=237    ctermfg=NONE
-    \ gui=NONE    guibg=#073642  guifg=NONE
-
-highlight CursorLine
-    \ term=NONE
-    \ cterm=NONE  ctermbg=235  ctermfg=NONE
-    \ gui=NONE    guibg=#073642  guifg=NONE
-
-highlight CursorLineNr
-    \ term=bold
-    \ cterm=bold  ctermbg=NONE   ctermfg=178
-    \ gui=bold    guibg=#073642  guifg=Orange
-
-highlight LineNr
-    \ term=NONE
-    \ cterm=NONE  ctermfg=241    ctermbg=NONE
-    \ gui=NONE    guifg=#839497  guibg=#073642
-
-highlight User1
-    \ term=NONE
-    \ cterm=NONE  ctermbg=237    ctermfg=Grey
-    \ gui=NONE    guibg=#073642  guifg=#839496
-
-" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-set statusline=
-set statusline+=%1*            " User1 highlight
-set statusline+=\ [%n]         " Buffer number
-set statusline+=\ %{GetGitBranchName()}        " Git branch name
-set statusline+=\ [%f]         " File path
-set statusline+=%m             " Modified flag
-set statusline+=%r             " Readonly flag
-set statusline+=%h             " Help file flag
-set statusline+=%w             " Preview window flag
-set statusline+=%y             " File type
-set statusline+=[
-set statusline+=%{&ff}         " File format
-set statusline+=:
-set statusline+=%{strlen(&fenc)?&fenc:'none'}  " File encoding
-set statusline+=]
-set statusline+=%=             " Left/Right separator
-set statusline+=%c             " File encoding
-set statusline+=,
-set statusline+=%l             " Current line number
-set statusline+=/
-set statusline+=%L             " Total number of lines
-set statusline+=\ (%P)\        " Percent through file
-
-" Example result:
-"
-"  [1] [master] [vim/vimrc][vim][unix:utf-8]            17,238/381 (59%)
 
 
 " ----------------------------------------------------------------------

@@ -74,13 +74,13 @@ main() {
 
     print_in_purple "\n   nvm\n\n"
 
-    if [ ! -d "$NVM_DIRECTORY" ]; then
-        install_nvm
-    else
-        update_nvm
-    fi
-
-    install_latest_stable_node
+    #if [ ! -d "$NVM_DIRECTORY" ]; then
+    #    install_nvm
+    #else
+    #    update_nvm
+    #fi
+    #
+    #install_latest_stable_node
 
 }
 

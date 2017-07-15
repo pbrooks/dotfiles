@@ -1,8 +1,14 @@
-# [pbrooks](https://github.com/pbrooks)’s dotfiles [![Build Status](https://travis-ci.org/pbrooks/dotfiles.svg?branch=master)](https://travis-ci.org/alrra/dotfiles)
+[pbrooks](https://github.com/pbrooks)’s dotfiles [![Build Status](https://travis-ci.org/pbrooks/dotfiles.svg?branch=master)](https://travis-ci.org/pbrooks/dotfiles)
 
 These are the base dotfiles that I start with when I set up a
 new environment. For more specific local needs I use the `.local`
 files described in the [`Local Settings`](#local-settings) section.
+
+Based on the excellent dotfiles bootstrap by [Cătălin Mariș](https://github.com/alrra/dotfiles).
+
+Main differences:
+
+* Definition of `GITHUB_REPOSITORY_LOCAL`, use to allow installation of additional dotfiles from a private GitHub repository.
 
 ## Table of Contents
 
@@ -18,6 +24,7 @@ files described in the [`Local Settings`](#local-settings) section.
   * [🔁 `git`](#git)
   * [⌨️  `tmux` & `vim`](#tmux--vim)
 * [📄 License](#license)
+
 
 ## Setup
 

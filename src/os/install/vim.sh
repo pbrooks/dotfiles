@@ -5,6 +5,7 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+<<<<<<< HEAD
 install_plugins() {
 
     declare -r VIM_PACK_DIR="$HOME/.vim/pack"
@@ -26,13 +27,20 @@ install_plugins() {
 }
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+=======
+>>>>>>> pbrooks base
 
 main() {
 
     print_in_purple "\n   Vim\n\n"
 
     "./$(get_os)/vim.sh"
+<<<<<<< HEAD
     install_plugins
+=======
+
+    printf "\n"
+>>>>>>> pbrooks base
 
 }
 
