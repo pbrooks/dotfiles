@@ -167,6 +167,16 @@ if has('windows')
     set winminheight=0              " Allow windows to be squashed.
 endif
 
+" Hardcode arrow keys mode
+noremap <Up> ""
+noremap! <Up> <Esc>
+noremap <Down> ""
+noremap! <Down> <Esc>
+noremap <Left> ""
+noremap! <Left> <Esc>
+noremap <Right> ""
+noremap! <Right> <Esc>
+
 
 " ----------------------------------------------------------------------
 " | Plugins                                                            |

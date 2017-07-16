@@ -6,18 +6,19 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+./fonts.sh
+exit 0
 ./xcode.sh
 ./homebrew.sh
 ./mas.sh
 ./java.sh
 ./bash.sh
-<<<<<<< HEAD
 
 ./git.sh
 ./../nvm.sh
 ./browsers.sh
 ./compression_tools.sh
-=======
+./fonts.sh
 
 ./../nvm.sh
 
@@ -30,7 +31,6 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 >>>>>>> pbrooks base
 ./gpg.sh
 ./image_tools.sh
-./mackup.sh
 ./misc.sh
 ./misc_tools.sh
 ./../npm.sh

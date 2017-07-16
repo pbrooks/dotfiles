@@ -49,6 +49,35 @@ brew_install() {
 
 }
 
+mas_install() {
+
+    declare -r FORMULA="$2"
+    declare -r FORMULA_READABLE_NAME="$1"
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    # Check if `Homebrew` is installed.
+
+    if ! cmd_exists "mas"; then
+        print_error "$FORMULA_READABLE_NAME ('mas' is not installed)"
+        return 1
+    fi
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    # Install the specified formula.
+
+    # shellcheck disable=SC2086
+    if mas list | grep "$FORMULA" &> /dev/null; then
+        print_success "$FORMULA_READABLE_NAME"
+    else
+        execute \
+            "mas install $FORMULA" \
+            "$FORMULA_READABLE_NAME"
+    fi
+
+}
+
 brew_prefix() {
 
     local path=""
