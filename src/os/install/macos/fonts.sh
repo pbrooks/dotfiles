@@ -10,4 +10,4 @@ print_in_purple "\n   Fonts\n\n"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-brew_install "Source Code Pro (Powerline)" "font-source-code-pro-for-powerline" "caskroom/fonts" "fonts"
+brew_install "Source Code Pro (Powerline)" "font-source-code-pro-for-powerline" "caskroom/fonts" "casks"
