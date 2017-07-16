@@ -1,19 +1,9 @@
 #!/bin/bash
 
 cd "$(dirname "${BASH_SOURCE[0]}")" \
-    && . "../utils.sh"
+    && . "../../utils.sh"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+print_in_purple "\n   Mackup\n\n"
 
-main() {
-
-    print_in_purple "\n   Vim\n\n"
-
-    "./$(get_os)/vim.sh"
-
-    printf "\n"
-
-}
-
-main

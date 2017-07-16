@@ -1,5 +1,9 @@
 #!/bin/bash
 
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+. "$DIR/utils_ssh.sh"
+
 answer_is_yes() {
     [[ "$REPLY" =~ ^[Yy]$ ]] \
         && return 0 \
@@ -9,6 +13,11 @@ answer_is_yes() {
 ask() {
     print_question "$1"
     read -r
+}
+
+ask_secret() {
+    print_question "$1"
+    read -s
 }
 
 ask_for_confirmation() {
@@ -152,6 +161,21 @@ get_os_version() {
 
     printf "%s" "$version"
 
+}
+
+get_serial() {
+
+    local os=""
+    local serial=""
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    os="$(get_os)"
+    if [ "$os" == "macos" ]; then
+        serial="$(system_profiler SPHardwareDataType | awk '/Serial/ {print $4}')"
+    fi
+
+    printf "%s" "$serial"
 }
 
 is_git_repository() {
@@ -348,4 +372,10 @@ show_spinner() {
 
     done
 
+}
+
+replace_file_entry() {
+  local filename=$1
+  local string=$2
+  sed -i -e '$a\' -e "$2" -e "/$2/d" $1
 }

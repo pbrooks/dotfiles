@@ -26,9 +26,9 @@ brew_install "Firefox Nightly" "firefoxnightly" "caskroom/versions" "cask"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-printf "\n"
+# printf "\n"
 
-brew_install "Flash" "flash-npapi" "caskroom/cask" "cask"
+# brew_install "Flash" "flash-npapi" "caskroom/cask" "cask"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

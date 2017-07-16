@@ -59,7 +59,8 @@ export PATH
     # Set latest version of `Bash` as the default
     # (macOS uses by default an older version of `Bash`).
 
-    chsh -s "$newShellPath" &> /dev/null
+    local user="$(whoami)"
+    sudo chsh -s "$newShellPath" "$user" &> /dev/null
     print_result $? "Bash (use latest version)"
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

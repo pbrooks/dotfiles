@@ -6,6 +6,8 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-print_in_purple "\n   Video Tools\n\n"
+print_in_purple "\n   Python\n\n"
 
-brew_install "FFmpeg" "ffmpeg --with-libvpx"
+
+brew_install "Python 2" "python2"
+brew_install "Python 3" "python3"
