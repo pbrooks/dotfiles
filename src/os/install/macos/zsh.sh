@@ -6,7 +6,7 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 
 change_default_shell() {
 
-    $newShellPath="/usr/local/bin/$1"
+    local newShellPath="/usr/local/bin/$1"
 
     local user="$(whoami)"
     sudo chsh -s "$newShellPath" "$user" &> /dev/null
@@ -18,8 +18,9 @@ main() {
     print_in_purple "\n   ZSH\n\n"
 
     brew_install "Zsh" "zsh"
-    execute "sh -c '$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)'"\
-        "Install oh-my-zsh"
+    if [ ! -e "$HOME/.oh-my-zsh" ]; then
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    fi
 
     change_default_shell "zsh"
 }

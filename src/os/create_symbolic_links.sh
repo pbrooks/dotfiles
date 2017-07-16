@@ -21,11 +21,11 @@ create_symlinks() {
 
         "vim/vim"
         "vim/vimrc"
+        "zsh/zshrc"
 
     )
 
     declare -a MACOS_FILES_TO_SYMLINK=(
-        "mackup.cfg"
     )
 
     local os=""

@@ -6,11 +6,14 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+./fonts.sh
+exit 0
 ./xcode.sh
 ./homebrew.sh
 ./mas.sh
 ./java.sh
 ./bash.sh
+./fonts.sh
 
 ./../nvm.sh
 
@@ -22,7 +25,6 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 ./git.sh
 ./gpg.sh
 ./image_tools.sh
-./mackup.sh
 ./misc.sh
 ./misc_tools.sh
 ./../npm.sh
