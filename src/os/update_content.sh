@@ -16,6 +16,15 @@ main() {
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+    ssh -T git@gitlab.com &> /dev/null
+
+    if [ $? -ne 1 ]; then
+        ./set_gitlab_ssh_key.sh \
+            || return 1
+    fi
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
     print_in_purple "\n • Update content\n\n"
 
     ask_for_confirmation "Do you want to update the content from the 'dotfiles' directory?"
