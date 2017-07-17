@@ -141,7 +141,7 @@ download_dotfiles_local() {
     git clone $DOTFILES_LOCAL_REPOSITORY_URL $tmpFile &> /dev/null
     print_result $? "Download local copy of repository"
 
-    cp -r $tmpFile/src/* ../local
+    cp -r $tmpFile/src ../local
     print_result $? "Copy files into place"
 
     rm -rf $tmpFile
