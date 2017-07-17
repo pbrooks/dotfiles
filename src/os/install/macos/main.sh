@@ -26,7 +26,7 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 ./misc.sh
 ./misc_tools.sh
 ./../npm.sh
-./pass.sh
+./paas.sh
 ./tmux.sh
 ./video_tools.sh
 ./../vim.sh
