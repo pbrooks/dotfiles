@@ -49,11 +49,11 @@ DISABLE_AUTO_UPDATE="true"
 plugins=(git git-extras brew osx pep8 vi-mode python virtualenvwrapper tmux )
 
 # Python virtualenvwrapper
+VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 export WORKON_HOME=~/.virtualenvs
 export PYTHONPATH=.
 export ANSIBLE_VAULT_PASSWORD_FILE=~/.ansible_password
 source /usr/local/bin/virtualenvwrapper.sh
-
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin/:$HOME/.fastlane/bin:${PATH}
 # export MANPATH="/usr/local/man:$MANPATH"
 
