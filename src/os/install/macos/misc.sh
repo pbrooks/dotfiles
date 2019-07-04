@@ -8,12 +8,10 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 
 print_in_purple "\n   Miscellaneous\n\n"
 
-<<<<<<< HEAD
 brew_install "Android File Transfer" "android-file-transfer" "caskroom/cask" "cask"
 brew_install "eyeD3" "eye-d3"
 brew_install "Spectacle" "spectacle" "caskroom/cask" "cask"
 brew_install "Transmission" "transmission" "caskroom/cask" "cask"
-=======
 brew_install "dockutil" "dockutil"
 
 brew_install "Alfred" "alfred" "caskroom/cask" "cask"
@@ -40,7 +38,6 @@ brew_install "SteamCMD" "steamcmd" "caskroom/cask" "cask"
 brew_install "Transmit" "transmit" "caskroom/cask" "cask"
 brew_install "Tripmode" "tripmode" "caskroom/cask" "cask"
 brew_install "Toggl" "toggldesktop" "caskroom/cask" "cask"
->>>>>>> pbrooks base
 brew_install "Unarchiver" "the-unarchiver" "caskroom/cask" "cask"
 brew_install "VLC" "vlc" "caskroom/cask" "cask"
 brew_install "Viscosity" "viscosity" "caskroom/cask" "cask"

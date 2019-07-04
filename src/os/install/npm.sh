@@ -20,10 +20,8 @@ main() {
 
     print_in_purple "\n   npm\n\n"
 
-<<<<<<< HEAD
     install_npm_package "npm (update)" "npm"
 
-=======
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     #install_npm_package "npm (update)" "npm"
@@ -36,7 +34,6 @@ main() {
     #install_npm_package "Babel" "babel-cli"
     #install_npm_package "JSHint" "jshint"
 
->>>>>>> pbrooks base
 }
 
 main
