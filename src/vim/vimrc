@@ -16,6 +16,7 @@ if dein#load_state('~/.cache/dein')
   call dein#add('Shougo/denite.nvim')
   call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
   call dein#add('Shougo/unite.vim')
+  call dein#add('fidian/hexmode')
 
   call dein#end()
   call dein#save_state()
@@ -129,8 +130,9 @@ noremap! <Left> <Esc>
 noremap <Right> ""
 noremap! <Right> <Esc>
 
+let g:hexmode_patterns = '*.bin,*.exe,*.dat,*.o,*.bin'
+let g:hexmode_xxd_options = '-g 1'
 
-
-
+set autoindent noexpandtab tabstop=4 shiftwidth=4
 
 syntax enable
