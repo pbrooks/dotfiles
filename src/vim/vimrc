@@ -1,18 +1,32 @@
-" ----------------------------------------------------------------------
-" | General Settings                                                   |
-" ----------------------------------------------------------------------
+if &compatible
+  set nocompatible
+endif
+set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
-set nocompatible               " Don't make Vim vi-compatibile.
+if dein#load_state('~/.cache/dein')
+  call dein#begin('~/.cache/dein')
 
-syntax on                      " Enable syntax highlighting.
+  call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
+  call dein#add('Shougo/deoplete.nvim')
+  if !has('nvim')
+    call dein#add('roxma/nvim-yarp')
+    call dein#add('roxma/vim-hug-neovim-rpc')
+  endif
+  call dein#add('scrooloose/nerdtree')
+  call dein#add('Shougo/denite.nvim')
+  call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
+  call dein#add('Shougo/unite.vim')
+  call dein#add('fidian/hexmode')
 
-if has("autocmd")
-    filetype plugin indent on
-    "           │     │    └──── Enable file type detection.
-    "           │     └───────── Enable loading of indent file.
-    "           └─────────────── Enable loading of plugin files.
+  call dein#end()
+  call dein#save_state()
 endif
 
+
+filetype plugin indent on
+
+
+syntax on
 set autoindent                 " Copy indent to the new line.
 
 set backupdir=~/.vim/backups   " Set directory for backup files.
@@ -20,11 +34,6 @@ set backupdir=~/.vim/backups   " Set directory for backup files.
 set backupskip=/tmp/*          " ┐ Don't create backups
 set backupskip+=/private/tmp/* " ┘ for certain files.
 
-set clipboard=unnamed          " ┐
-                               " │ Use the system clipboard
-if has("unnamedplus")          " │ as the default register.
-    set clipboard+=unnamedplus " │
-endif                          " ┘
 
 set cpoptions+=$               " When making a change, don't
                                " redisplay the line, and instead,
@@ -109,6 +118,7 @@ set wildmenu                   " Enable enhanced command-line
 
 set winminheight=0             " Allow windows to be squashed.
 
+
 " Hardcode arrow keys mode
 noremap <Up> ""
 noremap! <Up> <Esc>
@@ -118,6 +128,7 @@ noremap <Left> ""
 noremap! <Left> <Esc>
 noremap <Right> ""
 noremap! <Right> <Esc>
+
 
 
 " ----------------------------------------------------------------------
@@ -238,7 +249,13 @@ if has("autocmd")
 
     augroup END
 
-    " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+let g:hexmode_patterns = '*.bin,*.exe,*.dat,*.o,*.bin'
+let g:hexmode_xxd_options = '-g 1'
+
+
+set autoindent noexpandtab tabstop=4 shiftwidth=4
+
+syntax enable
 
     " Automatically strip the trailing
     " whitespaces when files are saved.
@@ -284,3 +301,4 @@ map <leader>W :w !sudo tee %<CR>
 if filereadable(glob("~/.vimrc.local"))
     source ~/.vimrc.local
 endif
+
