@@ -16,6 +16,7 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 ./../nvm.sh
 ./browsers.sh
 ./compression_tools.sh
+
 ./fonts.sh
 
 ./../nvm.sh
@@ -33,6 +34,7 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 ./../npm.sh
 ./quick_look.sh
 ./pass.sh
+./paas.sh
 ./tmux.sh
 ./video_tools.sh
 ./../vim.sh

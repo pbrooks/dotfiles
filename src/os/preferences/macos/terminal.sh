@@ -28,3 +28,4 @@ if ! grep -q "pam_tid.so" "/etc/pam.d/sudo"; then
     execute "sudo sh -c 'echo \"auth sufficient pam_tid.so\" >> /etc/pam.d/sudo'" \
         "Use Touch ID to authenticate sudo"
 fi
+

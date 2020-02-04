@@ -1,4 +1,6 @@
+
 [pbrooks](https://github.com/pbrooks)’s dotfiles [![Build Status](https://travis-ci.org/pbrooks/dotfiles.svg?branch=master)](https://travis-ci.org/pbrooks/dotfiles)
+
 
 These are the base dotfiles that I start with when I set up a
 new environment. For more specific local needs I use the `.local`
@@ -9,6 +11,7 @@ Based on the excellent dotfiles bootstrap by [Cătălin Mariș](https://github.c
 Main differences:
 
 * Definition of `GITHUB_REPOSITORY_LOCAL`, use to allow installation of additional dotfiles from a private GitHub repository.
+
 
 ## Table of Contents
 
@@ -24,6 +27,7 @@ Main differences:
   * [🔁 `git`](#git)
   * [⌨️  `tmux` & `vim`](#tmux--vim)
 * [📄 License](#license)
+
 
 
 ## Setup
@@ -180,6 +184,7 @@ Output for `git status`:
 
 Output for `git log`:
 
+
 <table>
     <tbody>
         <tr>
@@ -196,6 +201,7 @@ Output for `git log`:
         </td>
     </tbody>
 </table>
+
 
 * [Cătălin Mariș](https://github.com/alrra/dotfiles)
   [Mathias Bynens'](https://github.com/mathiasbynens)

@@ -118,7 +118,6 @@ set wildmenu                   " Enable enhanced command-line
 
 set winminheight=0             " Allow windows to be squashed.
 
-let g:syntastic_check_on_wq = 0
 
 " Hardcode arrow keys mode
 noremap <Up> ""
@@ -130,9 +129,176 @@ noremap! <Left> <Esc>
 noremap <Right> ""
 noremap! <Right> <Esc>
 
+
+
+" ----------------------------------------------------------------------
+" | Plugins                                                            |
+" ----------------------------------------------------------------------
+
+set runtimepath+=~/.vim/plugins/Shougo/dein.vim
+
+call dein#begin("~/.vim/plugins")
+call dein#add('Shougo/dein.vim')
+call dein#add('scrooloose/nerdtree')
+call dein#add('scrooloose/syntastic')
+call dein#add('Shougo/unite.vim')
+call dein#add('Shougo/vimfiler.vim')
+call dein#add('Shougo/vimproc.vim', {'build' : 'make -f make_mac.mak'})
+call dein#add('nvie/vim-flake8')
+call dein#add('mileszs/ack.vim')
+call dein#add('vim-airline/vim-airline')
+call dein#add('ryanoasis/vim-devicons')
+call dein#end()
+filetype plugin indent on
+if dein#check_install()
+  call dein#install()
+endif
+
+" ----------------------------------------------------------------------
+" | Plugin - flake8                                                    |
+" ----------------------------------------------------------------------
+
+autocmd BufWritePost *.py call Flake8()
+let g:flake8_show_in_file=1
+let g:flake8_show_quickfix=0
+let g:flake8_show_in_gutter=1
+
+
+" ----------------------------------------------------------------------
+" | Helper Functions                                                   |
+" ----------------------------------------------------------------------
+
+function! GetGitBranchName()
+
+    let branchName = ""
+
+    if exists("g:loaded_fugitive")
+        let branchName = "[" . fugitive#head() . "]"
+    endif
+
+    return branchName
+
+endfunction
+
+" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+function! StripTrailingWhitespaces()
+
+    " Save last search and cursor position.
+
+    let searchHistory = @/
+    let cursorLine = line(".")
+    let cursorColumn = col(".")
+
+    " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    " Strip trailing whitespaces.
+
+    %s/\s\+$//e
+
+    " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    " Restore previous search history and cursor position.
+
+    let @/ = searchHistory
+    call cursor(cursorLine, cursorColumn)
+
+
+endfunction
+
+" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+function! ToggleLimits()
+
+    " [51,73]
+    "
+    "   * Git commit message
+    "     http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
+    "
+    " [81]
+    "
+    "   * general use
+
+    if ( &colorcolumn == "73" )
+        set colorcolumn+=51,81
+    else
+        set colorcolumn-=51,81
+    endif
+
+endfunction
+
+
+" ----------------------------------------------------------------------
+" | Automatic Commands                                                 |
+" ----------------------------------------------------------------------
+
+if has("autocmd")
+
+    " Autocommand Groups.
+    " http://learnvimscriptthehardway.stevelosh.com/chapters/14.html
+
+    " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    " Automatically reload the configurations from
+    " the `~/.vimrc` file whenever they are changed.
+
+    augroup auto_reload_vim_configs
+
+        autocmd!
+        autocmd BufWritePost vimrc source $MYVIMRC
+
+    augroup END
+
 let g:hexmode_patterns = '*.bin,*.exe,*.dat,*.o,*.bin'
 let g:hexmode_xxd_options = '-g 1'
+
 
 set autoindent noexpandtab tabstop=4 shiftwidth=4
 
 syntax enable
+
+    " Automatically strip the trailing
+    " whitespaces when files are saved.
+
+    augroup strip_trailing_whitespaces
+
+        " List of file types for which the trailing whitespaces
+        " should not be removed:
+
+        let excludedFileTypes = []
+
+        " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+        " Only strip the trailing whitespaces if
+        " the file type is not in the excluded list.
+
+        autocmd!
+        autocmd BufWritePre * if index(excludedFileTypes, &ft) < 0 | :call StripTrailingWhitespaces()
+
+    augroup END
+
+endif
+
+" ----------------------------------------------------------------------
+" | Key Mappings                                                       |
+" ----------------------------------------------------------------------
+
+" [,W ] Sudo write.
+
+map <leader>W :w !sudo tee %<CR>
+
+
+" ----------------------------------------------------------------------
+" | Local Settings                                                     |
+" ----------------------------------------------------------------------
+
+" Load local settings if they exist.
+"
+" [!] The following needs to remain at the end of this file in
+"     order to allow any of the above settings to be overwritten
+"     by the local ones.
+
+if filereadable(glob("~/.vimrc.local"))
+    source ~/.vimrc.local
+endif
+

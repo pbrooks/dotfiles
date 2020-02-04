@@ -27,6 +27,7 @@ install_plugins() {
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+
 main() {
 
     print_in_purple "\n   Vim\n\n"

@@ -75,6 +75,7 @@ execute "defaults write -g NSWindowResizeTime -float 0.001" \
 execute "defaults write -g PMPrintingExpandedStateForPrint -bool true" \
     "Expand print panel by default"
 
+
 execute "defaults write -g QLPanelAnimationDuration -float 0" \
     "Disable opening a Quick Look window animations."
 
@@ -86,6 +87,7 @@ execute "sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.
          sudo scutil --set HostName 'laptop' && \
          sudo scutil --set LocalHostName 'laptop'" \
     "Set computer name"
+
 
 execute "sudo systemsetup -setrestartfreeze on" \
     "Restart automatically if the computer freezes"
