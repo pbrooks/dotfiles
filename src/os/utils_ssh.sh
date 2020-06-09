@@ -20,7 +20,7 @@ copy_public_ssh_key_to_clipboard () {
 
 generate_ssh_keys() {
 
-    ssh-keygen -t rsa -b 4096 -C "$2" -f "$1"
+    ssh-keygen -t ed25519 -a 100 -o -C "$2" -f "$1"
 
     print_result $? "Generate SSH keys"
 }
