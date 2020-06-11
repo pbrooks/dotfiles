@@ -72,4 +72,4 @@ set undofile                   " Automatically save undo history.
 
 set history=5000               " Increase command line history.
 set directory=~/.vim/swaps     " Set directory for swap files.
-
+set autoread | au CursorHold * checktime | call feedkeys("lh")
