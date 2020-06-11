@@ -69,6 +69,34 @@ set backupskip+=/private/tmp/* " ┘ for certain files.
 
 set undodir=~/.vim/undos       " Set directory for undo files.
 set undofile                   " Automatically save undo history.
+=======
+
+" ----------------------------------------------------------------------
+" | Editing                                                            |
+" ----------------------------------------------------------------------
+syntax on
+set autoindent                 " Copy indent to the new line.
+
+set magic
+
+set showcmd                    " Show the command being typed.
+set showmode                   " Show current mode.
+set spelllang=en_gb            " Set the spellchecking language.
+
+" ----------------------------------------------------------------------
+" | Backup / Undo                                                      |
+" ----------------------------------------------------------------------
+set backupdir=~/.vim/backups   " Set directory for backup files.
+
+set backupskip=/tmp/*          " ┐ Don't create backups
+set backupskip+=/private/tmp/* " ┘ for certain files.
+
+set undodir=~/.vim/undos       " Set directory for undo files.
+set undofile                   " Automatically save undo history.
+
+set history=5000               " Increase command line history.
+set directory=~/.vim/swaps     " Set directory for swap files.
+>>>>>>> MISC: Update vim, zsh and bring config up to date
 
 set history=5000               " Increase command line history.
 set directory=~/.vim/swaps     " Set directory for swap files.
