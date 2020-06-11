@@ -1,0 +1,9 @@
+[submodule "src/zsh/powerlevel10k"]
+	path = src/zsh/powerlevel10k
+	url = https://github.com/romkatv/powerlevel10k.git
+[submodule "src/zsh/zgen"]
+	path = src/zsh/zgen
+	url = https://github.com/tarjoilija/zgen
+[submodule "src/zsh/zplug"]
+	path = src/zsh/zplug
+	url = https://github.com/zplug/zplug

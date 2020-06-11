@@ -22,6 +22,8 @@ create_symlinks() {
         "vim/vim"
         "vim/vimrc"
         "zsh/zshrc"
+	"zsh/powerlevel10k"
+	"zsh/zplug"
 
     )
 

@@ -168,7 +168,7 @@ get_os_variant() {
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    printf "%s" "-$variant"
+    printf "%s" "/$variant"
 }
 
 get_os_version() {

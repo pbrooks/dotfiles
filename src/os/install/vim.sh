@@ -7,21 +7,19 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 
 install_plugins() {
 
-    declare -r VIM_PACK_DIR="$HOME/.vim/pack"
-    declare -r MINPAC_DIR="$VIM_PACK_DIR/minpac/opt/minpac"
-    declare -r MINPAC_GIT_REPO_URL="https://github.com/k-takata/minpac.git"
+    declare -r VIMPLUG_FILE="$HOME/.vim/autoload/plug.vim"
+    declare -r VIMPLUG_SOURCE="https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     # Install plugins.
 
     execute \
-        "rm -rf $VIM_PACK_DIR \
-            && git clone --quiet $MINPAC_GIT_REPO_URL $MINPAC_DIR" \
+    	"curl -fLo $VIMPLUG_FILE --create-dirs \
+	   $VIMPLUG_SOURCE" \
         "Install plugins" \
         || return 1
-
-    vim +PluginsSetup
+    vim +PlugInstall +qall
 
 }
 
