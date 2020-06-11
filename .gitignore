@@ -1,0 +1,6 @@
+src/zsh/powerlevel10k
+src/zsh/zgen
+src/zsg/zplug
+src/vim/vim/autoload
+src/vim/vim/pack
+src/vim/vim/plugged

@@ -1,125 +1,28 @@
+" ----------------------------------------------------------------------
+" | XXX: What is this?                                                 |
+" ----------------------------------------------------------------------
 if &compatible
   set nocompatible
 endif
-set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
-if dein#load_state('~/.cache/dein')
-  call dein#begin('~/.cache/dein')
+" ----------------------------------------------------------------------
+" | Package manager                                                    |
+" ----------------------------------------------------------------------
+call plug#begin('~/.vim/plugged')
 
-  call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
-  call dein#add('Shougo/deoplete.nvim')
-  if !has('nvim')
-    call dein#add('roxma/nvim-yarp')
-    call dein#add('roxma/vim-hug-neovim-rpc')
-  endif
-  call dein#add('scrooloose/nerdtree')
-  call dein#add('Shougo/denite.nvim')
-  call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
-  call dein#add('Shougo/unite.vim')
-  call dein#add('fidian/hexmode')
+Plug 'airblade/vim-gitgutter'
+Plug 'fidian/hexmode'
+Plug 'nfvs/vim-perforce'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'vim-airline/vim-airline'
+Plug 'w0rp/ale'
+call plug#end()
 
-  call dein#end()
-  call dein#save_state()
-endif
-
-
-filetype plugin indent on
-
-
-syntax on
-set autoindent                 " Copy indent to the new line.
-
-set backupdir=~/.vim/backups   " Set directory for backup files.
-
-set backupskip=/tmp/*          " ┐ Don't create backups
-set backupskip+=/private/tmp/* " ┘ for certain files.
-
-
-set cpoptions+=$               " When making a change, don't
-                               " redisplay the line, and instead,
-                               " put a `$` sign at the end of
-                               " the changed text.
-
-set directory=~/.vim/swaps     " Set directory for swap files.
-set encoding=utf-8 nobomb      " Use UTF-8 without BOM.
-set history=5000               " Increase command line history.
-set hlsearch                   " Enable search highlighting.
-set ignorecase                 " Ignore case in search patterns.
-
-set incsearch                  " Highlight search pattern
-                               " as it is being typed.
-
-set laststatus=2               " Always show the status line.
-
-set lazyredraw                 " Do not redraw the screen while
-                               " executing macros, registers
-                               " and other commands that have
-                               " not been typed.
-
-set listchars=tab:▸\           " ┐
-set listchars+=trail:·         " │ Use custom symbols to
-set listchars+=eol:↴           " │ represent invisible characters.
-set listchars+=nbsp:_          " ┘
-
-set magic                      " Enable extended regexp.
-set mousehide                  " Hide mouse pointer while typing.
-set noerrorbells               " Disable error bells.
-
-set nojoinspaces               " When using the join command,
-                               " only insert a single space
-                               " after a `.`, `?`, or `!`.
-
-set nostartofline              " Kept the cursor on the same column.
-set number                     " Show line number.
-
-set numberwidth=5              " Increase the minimal number of
-                               " columns used for the `line number`.
-
-set report=0                   " Report the number of lines changed.
-set ruler                      " Show cursor position.
-
-set scrolloff=5                " When scrolling, keep the cursor
-                               " 5 lines below the top and 5 lines
-                               " above the bottom of the screen.
-
-set shortmess=aAItW            " Avoid all the hit-enter prompts.
-set showcmd                    " Show the command being typed.
-set showmode                   " Show current mode.
-set spelllang=en_us            " Set the spellchecking language.
-
-set smartcase                  " Override `ignorecase` option
-                               " if the search pattern contains
-                               " uppercase characters.
-
-set synmaxcol=2500             " Limit syntax highlighting (this
-                               " avoids the very slow redrawing
-                               " when files contain long lines).
-
-set tabstop=4                  " ┐
-set softtabstop=4              " │ Set global <TAB> settings.
-set shiftwidth=4               " │
-set expandtab                  " ┘
-
-set ttyfast                    " Enable fast terminal connection.
-set undodir=~/.vim/undos       " Set directory for undo files.
-set undofile                   " Automatically save undo history.
-set virtualedit=all            " Allow cursor to be anywhere.
-
-set visualbell                 " ┐
-set noerrorbells               " │ Disable beeping and window flashing
-set t_vb=                      " ┘ https://vim.wikia.com/wiki/Disable_beeping
-
-set wildmenu                   " Enable enhanced command-line
-                               " completion (by hitting <TAB> in
-                               " command mode, Vim will show the
-                               " possible matches just above the
-                               " command line with the first
-                               " match highlighted).
-
-set winminheight=0             " Allow windows to be squashed.
-
-
-" Hardcode arrow keys mode
+" ----------------------------------------------------------------------
+" | Hardmode                                                           |
+" ----------------------------------------------------------------------
 noremap <Up> ""
 noremap! <Up> <Esc>
 noremap <Down> ""
@@ -129,176 +32,44 @@ noremap! <Left> <Esc>
 noremap <Right> ""
 noremap! <Right> <Esc>
 
-
+" ----------------------------------------------------------------------
+" | Theme                                                              |
+" ----------------------------------------------------------------------
+set background=dark
 
 " ----------------------------------------------------------------------
-" | Plugins                                                            |
+" | Annotation                                                         |
 " ----------------------------------------------------------------------
+set number
 
-set runtimepath+=~/.vim/plugins/Shougo/dein.vim
-
-call dein#begin("~/.vim/plugins")
-call dein#add('Shougo/dein.vim')
-call dein#add('scrooloose/nerdtree')
-call dein#add('scrooloose/syntastic')
-call dein#add('Shougo/unite.vim')
-call dein#add('Shougo/vimfiler.vim')
-call dein#add('Shougo/vimproc.vim', {'build' : 'make -f make_mac.mak'})
-call dein#add('nvie/vim-flake8')
-call dein#add('mileszs/ack.vim')
-call dein#add('vim-airline/vim-airline')
-call dein#add('ryanoasis/vim-devicons')
-call dein#end()
-filetype plugin indent on
-if dein#check_install()
-  call dein#install()
-endif
+set hlsearch
+set incsearch                  " Highlight search pattern
+                               " as it is being typed.
+set encoding=utf-8 nobomb      " Use UTF-8 without BOM.
 
 " ----------------------------------------------------------------------
-" | Plugin - flake8                                                    |
+" | Editing                                                            |
 " ----------------------------------------------------------------------
+syntax on
+set autoindent                 " Copy indent to the new line.
 
-autocmd BufWritePost *.py call Flake8()
-let g:flake8_show_in_file=1
-let g:flake8_show_quickfix=0
-let g:flake8_show_in_gutter=1
+set magic
 
-
-" ----------------------------------------------------------------------
-" | Helper Functions                                                   |
-" ----------------------------------------------------------------------
-
-function! GetGitBranchName()
-
-    let branchName = ""
-
-    if exists("g:loaded_fugitive")
-        let branchName = "[" . fugitive#head() . "]"
-    endif
-
-    return branchName
-
-endfunction
-
-" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-function! StripTrailingWhitespaces()
-
-    " Save last search and cursor position.
-
-    let searchHistory = @/
-    let cursorLine = line(".")
-    let cursorColumn = col(".")
-
-    " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-    " Strip trailing whitespaces.
-
-    %s/\s\+$//e
-
-    " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-    " Restore previous search history and cursor position.
-
-    let @/ = searchHistory
-    call cursor(cursorLine, cursorColumn)
-
-
-endfunction
-
-" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-function! ToggleLimits()
-
-    " [51,73]
-    "
-    "   * Git commit message
-    "     http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
-    "
-    " [81]
-    "
-    "   * general use
-
-    if ( &colorcolumn == "73" )
-        set colorcolumn+=51,81
-    else
-        set colorcolumn-=51,81
-    endif
-
-endfunction
-
+set showcmd                    " Show the command being typed.
+set showmode                   " Show current mode.
+set spelllang=en_gb            " Set the spellchecking language.
 
 " ----------------------------------------------------------------------
-" | Automatic Commands                                                 |
+" | Backup / Undo                                                      |
 " ----------------------------------------------------------------------
+set backupdir=~/.vim/backups   " Set directory for backup files.
 
-if has("autocmd")
+set backupskip=/tmp/*          " ┐ Don't create backups
+set backupskip+=/private/tmp/* " ┘ for certain files.
 
-    " Autocommand Groups.
-    " http://learnvimscriptthehardway.stevelosh.com/chapters/14.html
+set undodir=~/.vim/undos       " Set directory for undo files.
+set undofile                   " Automatically save undo history.
 
-    " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-    " Automatically reload the configurations from
-    " the `~/.vimrc` file whenever they are changed.
-
-    augroup auto_reload_vim_configs
-
-        autocmd!
-        autocmd BufWritePost vimrc source $MYVIMRC
-
-    augroup END
-
-let g:hexmode_patterns = '*.bin,*.exe,*.dat,*.o,*.bin'
-let g:hexmode_xxd_options = '-g 1'
-
-
-set autoindent noexpandtab tabstop=4 shiftwidth=4
-
-syntax enable
-
-    " Automatically strip the trailing
-    " whitespaces when files are saved.
-
-    augroup strip_trailing_whitespaces
-
-        " List of file types for which the trailing whitespaces
-        " should not be removed:
-
-        let excludedFileTypes = []
-
-        " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-        " Only strip the trailing whitespaces if
-        " the file type is not in the excluded list.
-
-        autocmd!
-        autocmd BufWritePre * if index(excludedFileTypes, &ft) < 0 | :call StripTrailingWhitespaces()
-
-    augroup END
-
-endif
-
-" ----------------------------------------------------------------------
-" | Key Mappings                                                       |
-" ----------------------------------------------------------------------
-
-" [,W ] Sudo write.
-
-map <leader>W :w !sudo tee %<CR>
-
-
-" ----------------------------------------------------------------------
-" | Local Settings                                                     |
-" ----------------------------------------------------------------------
-
-" Load local settings if they exist.
-"
-" [!] The following needs to remain at the end of this file in
-"     order to allow any of the above settings to be overwritten
-"     by the local ones.
-
-if filereadable(glob("~/.vimrc.local"))
-    source ~/.vimrc.local
-endif
-
+set history=5000               " Increase command line history.
+set directory=~/.vim/swaps     " Set directory for swap files.
+set autoread | au CursorHold * checktime | call feedkeys("lh")

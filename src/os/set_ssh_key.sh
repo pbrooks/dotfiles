@@ -22,7 +22,7 @@ main() {
 
     print_in_purple "\n • Set up SSH keys\n\n"
 
-    local sshKeyFileName="$HOME/.ssh/id_rsa"
+    local sshKeyFileName="$HOME/.ssh/id_ed25519"
 
     set_ssh_key $sshKeyFileName $1
 

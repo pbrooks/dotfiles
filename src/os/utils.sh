@@ -127,6 +127,7 @@ get_os() {
 
     local os=""
     local kernelName=""
+    local os_variant=""
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -141,8 +142,33 @@ get_os() {
         os="$kernelName"
     fi
 
-    printf "%s" "$os"
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+    os_variant="$(get_os_variant)"
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    printf "%s" "$os"
+    if [ ! -z $os_variant ]; then
+	printf "%s" "$os_variant"
+    fi
+
+}
+
+get_os_variant() {
+
+    local variant=""
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    grep -q Microsoft /proc/version
+    if [ $? -eq 0 ]; then
+        variant="wsl"
+    fi
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    printf "%s" "/$variant"
 }
 
 get_os_version() {
