@@ -69,7 +69,6 @@ set backupskip+=/private/tmp/* " ┘ for certain files.
 
 set undodir=~/.vim/undos       " Set directory for undo files.
 set undofile                   " Automatically save undo history.
-=======
 
 " ----------------------------------------------------------------------
 " | Editing                                                            |
@@ -93,10 +92,6 @@ set backupskip+=/private/tmp/* " ┘ for certain files.
 
 set undodir=~/.vim/undos       " Set directory for undo files.
 set undofile                   " Automatically save undo history.
-
-set history=5000               " Increase command line history.
-set directory=~/.vim/swaps     " Set directory for swap files.
->>>>>>> MISC: Update vim, zsh and bring config up to date
 
 set history=5000               " Increase command line history.
 set directory=~/.vim/swaps     " Set directory for swap files.
