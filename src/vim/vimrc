@@ -59,6 +59,11 @@ set showcmd                    " Show the command being typed.
 set showmode                   " Show current mode.
 set spelllang=en_gb            " Set the spellchecking language.
 
+set tabstop=4                  " ┐
+set softtabstop=4              " │ Set global <TAB> settings.
+set shiftwidth=4               " │
+set expandtab                  " ┘
+
 " ----------------------------------------------------------------------
 " | Backup / Undo                                                      |
 " ----------------------------------------------------------------------
@@ -95,4 +100,12 @@ set undofile                   " Automatically save undo history.
 
 set history=5000               " Increase command line history.
 set directory=~/.vim/swaps     " Set directory for swap files.
-set autoread | au CursorHold * checktime | call feedkeys("lh")
+
+set autoread | au CursorHold * checktime | call feedkeys("lh") " autoreload
+
+" ----------------------------------------------------------------------
+" | Config behaviour                                                    |
+" ----------------------------------------------------------------------
+if filereadable(glob("~/.vimrc.local")) 
+    source ~/.vimrc.local
+endif
