@@ -18,6 +18,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'w0rp/ale'
+Plug 'jamessan/vim-gnupg'
 call plug#end()
 
 " ----------------------------------------------------------------------
