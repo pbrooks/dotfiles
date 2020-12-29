@@ -161,14 +161,16 @@ get_os_variant() {
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    grep -q Microsoft /proc/version
+    grep -iq Microsoft /proc/version
     if [ $? -eq 0 ]; then
         variant="wsl"
     fi
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    printf "%s" "/$variant"
+    if [ ! -z $variant ]; then
+        printf "%s" "/$variant"
+    fi
 }
 
 get_os_version() {

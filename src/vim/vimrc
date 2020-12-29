@@ -18,6 +18,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'w0rp/ale'
+Plug 'jamessan/vim-gnupg'
 call plug#end()
 
 " ----------------------------------------------------------------------
@@ -59,6 +60,34 @@ set showcmd                    " Show the command being typed.
 set showmode                   " Show current mode.
 set spelllang=en_gb            " Set the spellchecking language.
 
+set tabstop=4                  " ┐
+set softtabstop=4              " │ Set global <TAB> settings.
+set shiftwidth=4               " │
+set expandtab                  " ┘
+
+" ----------------------------------------------------------------------
+" | Backup / Undo                                                      |
+" ----------------------------------------------------------------------
+set backupdir=~/.vim/backups   " Set directory for backup files.
+
+set backupskip=/tmp/*          " ┐ Don't create backups
+set backupskip+=/private/tmp/* " ┘ for certain files.
+
+set undodir=~/.vim/undos       " Set directory for undo files.
+set undofile                   " Automatically save undo history.
+
+" ----------------------------------------------------------------------
+" | Editing                                                            |
+" ----------------------------------------------------------------------
+syntax on
+set autoindent                 " Copy indent to the new line.
+
+set magic
+
+set showcmd                    " Show the command being typed.
+set showmode                   " Show current mode.
+set spelllang=en_gb            " Set the spellchecking language.
+
 " ----------------------------------------------------------------------
 " | Backup / Undo                                                      |
 " ----------------------------------------------------------------------
@@ -72,4 +101,16 @@ set undofile                   " Automatically save undo history.
 
 set history=5000               " Increase command line history.
 set directory=~/.vim/swaps     " Set directory for swap files.
-set autoread | au CursorHold * checktime | call feedkeys("lh")
+set autoread | au CursorHold * checktime | call feedkeys("lh") " autoreload
+
+" ----------------------------------------------------------------------
+" | It's not such a wonderful life                                     |
+" ----------------------------------------------------------------------
+set noerrorbells visualbell t_vb=
+
+" ----------------------------------------------------------------------
+" | Config behaviour                                                   |
+" ----------------------------------------------------------------------
+if filereadable(glob("~/.vimrc.local")) 
+    source ~/.vimrc.local
+endif
