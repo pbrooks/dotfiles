@@ -82,7 +82,12 @@ set directory=~/.vim/swaps     " Set directory for swap files.
 set autoread | au CursorHold * checktime | call feedkeys("lh") " autoreload
 
 " ----------------------------------------------------------------------
-" | Config behaviour                                                    |
+" | It's not such a wonderful life                                     |
+" ----------------------------------------------------------------------
+set noerrorbells visualbell t_vb=
+
+" ----------------------------------------------------------------------
+" | Config behaviour                                                   |
 " ----------------------------------------------------------------------
 if filereadable(glob("~/.vimrc.local")) 
     source ~/.vimrc.local
