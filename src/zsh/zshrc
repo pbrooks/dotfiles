@@ -37,5 +37,6 @@ COMPLETION_WAITING_DOTS="true"
 LS_COLORS='ow=01;36;40'
 export LS_COLORS 
 
+source $HOME/.cargo/env
 source $HOME/.zshrc_local
 . ~/.oh-my-zsh/oh-my-zsh.sh

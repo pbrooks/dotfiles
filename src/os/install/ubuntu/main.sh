@@ -19,5 +19,6 @@ upgrade
 ./misc_tools.sh
 ./tmux.sh
 ./../vim.sh
+./zsh.sh
 
 ./cleanup.sh

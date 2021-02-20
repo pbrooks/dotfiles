@@ -197,6 +197,10 @@
     #
     # See also: https://github.com/alrra/dotfiles#gitconfiglocal
 
+[merge]
+    tool = vimdiff
+    conflictstyle = diff3
+
 [include]
 
     # Load local configs.
@@ -207,3 +211,4 @@
     #     by the local ones
 
     path = ~/.gitconfig.local
+
