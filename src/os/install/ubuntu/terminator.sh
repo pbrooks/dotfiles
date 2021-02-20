@@ -9,3 +9,5 @@ main() {
 
     install_package "Terminator" "terminator"
 }
+
+main
