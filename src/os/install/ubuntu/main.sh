@@ -20,5 +20,7 @@ upgrade
 ./tmux.sh
 ./../vim.sh
 ./zsh.sh
+./terminator.sh
+./i3wm.sh
 
 ./cleanup.sh

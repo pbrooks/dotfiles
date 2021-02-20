@@ -26,7 +26,9 @@ create_symlinks() {
         "zsh/p10k.zsh"
         "zsh/powerlevel10k"
         "zsh/zplug"
+        "fonts"
 
+        "i3"
     )
 
     declare -a MACOS_FILES_TO_SYMLINK=(
