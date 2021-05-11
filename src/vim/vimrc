@@ -22,6 +22,8 @@ Plug 'jamessan/vim-gnupg'
 Plug 'rust-lang/rust.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'puremourning/vimspector'
+Plug 'morhetz/gruvbox' 
+Plug 'kshenoy/vim-signature'
 call plug#end()
 
 " ----------------------------------------------------------------------
@@ -40,6 +42,9 @@ noremap! <Right> <Esc>
 " | Theme                                                              |
 " ----------------------------------------------------------------------
 set background=dark
+autocmd vimenter * ++nested colorscheme gruvbox
+let g:gruvbox_transparent_bg=1
+let g:gruvbox_contrast_dark="hard"
 
 " ----------------------------------------------------------------------
 " | Annotation                                                         |
@@ -252,5 +257,6 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
 
 set splitright
