@@ -18,6 +18,7 @@ upgrade
 ./misc.sh
 ./misc_tools.sh
 ./tmux.sh
+./node.sh
 ./../vim.sh
 ./zsh.sh
 ./terminator.sh

@@ -11,7 +11,7 @@ print_in_purple "\n   Miscellaneous Tools\n\n"
 install_package "cURL" "curl"
 install_package "ShellCheck" "shellcheck"
 install_package "xclip" "xclip"
-install_package "ack" "ack-grep"
+install_package "ack" "ack"
 
 if [ -d "$HOME/.nvm" ]; then
 

@@ -37,9 +37,23 @@ install_package() {
     declare -r EXTRA_ARGUMENTS="$3"
     declare -r PACKAGE="$2"
     declare -r PACKAGE_READABLE_NAME="$1"
+    declare -r PACKAGE_MANAGER="$(get_package_manager)"
+
+    local install=""
+
+
+    if [ "$PACKAGE_MANAGER" == "apt" ]; then
+      	install="apt-get install --allow-unathenticated -qqy" 
+    elif [ "$PACKAGE_MANAGER" == "pacman" ]; then 
+	install="pacman -S --noconfirm --needed"
+    else
+        install=""
+    fi
+
 
     if ! package_is_installed "$PACKAGE"; then
-        execute "sudo apt-get install --allow-unauthenticated -qqy $EXTRA_ARGUMENTS $PACKAGE" "$PACKAGE_READABLE_NAME"
+        execute "sudo $install $EXTRA_ARGUMENTS $PACKAGE" "$PACKAGE_READABLE_NAME"
+        # execute "sudo apt-get install --allow-unauthenticated -qqy $EXTRA_ARGUMENTS $PACKAGE" "$PACKAGE_READABLE_NAME"
         #                                      suppress output ─┘│
         #            assume "yes" as the answer to all prompts ──┘
     else

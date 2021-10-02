@@ -137,7 +137,7 @@ get_os() {
         os="macos"
     elif [ "$kernelName" == "Linux" ] && \
          [ -e "/etc/os-release" ]; then
-        os="$(. /etc/os-release; printf "%s" "$ID")"
+        os="linux"
     else
         os="$kernelName"
     fi
@@ -152,6 +152,23 @@ get_os() {
     if [ ! -z $os_variant ]; then
 	printf "%s" "$os_variant"
     fi
+
+}
+
+get_package_manager() {
+
+    local package_manager=""
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    os_type="$(. /etc/os-release; printf "%s" "$ID_LIKE")"
+    if [ "$os_type" == "debian" ]; then
+        package_manager="apt"
+    elif [ "$os_type" == "arch" ]; then
+        package_manager="pacman"
+    fi
+
+    printf "%s" "$package_manager"
 
 }
 
