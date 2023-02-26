@@ -166,6 +166,7 @@ download_utils() {
 }
 
 download_submodules() {
+    git submodule update --init --recursive
     git submodule update --recursive --remote
 }
 
@@ -191,11 +192,11 @@ verify_os() {
     local os_name="$(get_os)"
     local os_version="$(get_os_version)"
 
-
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     # Check if the OS is `macOS` and
     # it's above the required version.
+    return 0
 
     if [ "$os_name" == "macos" ]; then
 

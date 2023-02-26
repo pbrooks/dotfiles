@@ -28,8 +28,8 @@ HYPHEN_INSENSITIVE="true"
 DISABLE_UPDATE_PROMPT="false"
 DISABLE_AUTO_UPDATE="false"
 CASE_SENSITIVE="true"
-ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
+DISABLE_CORRECTION="true"
 
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -40,3 +40,7 @@ export LS_COLORS
 source $HOME/.cargo/env
 source $HOME/.zshrc_local
 . ~/.oh-my-zsh/oh-my-zsh.sh
+export WORKON_HOME=~/.venv
+source /usr/bin/virtualenvwrapper.sh
+export PATH=${PATH}:/usr/local/go/bin
+export EDITOR=vim

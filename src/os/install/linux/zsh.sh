@@ -22,6 +22,8 @@ main() {
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     fi
 
+    touch ~/.zshrc_local
+
     change_default_shell "zsh"
 }
 

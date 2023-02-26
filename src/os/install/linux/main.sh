@@ -17,7 +17,9 @@ upgrade
 ./image_tools.sh
 ./misc.sh
 ./misc_tools.sh
+./rust.sh
 ./tmux.sh
+./node.sh
 ./../vim.sh
 ./zsh.sh
 ./terminator.sh
