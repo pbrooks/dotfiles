@@ -25,6 +25,8 @@
 
     w   = instaweb --httpd=webrick              # Start web-based visualizer.
 
+    hx = !exec /x/proj/git-hx/target/debug/git-hx
+
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     # Find commits by source code.
@@ -212,3 +214,5 @@
 
     path = ~/.gitconfig.local
 
+[init]
+	defaultBranch = main

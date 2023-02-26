@@ -40,10 +40,10 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-bindsym $mod+Shift+l exec i3lock
+#bindsym $mod+Shift+l exec i3lock
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+#bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -175,6 +175,9 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
+bindsym Print       exec flameshot full
+bindsym Shift+Print exec flameshot gui
+exec xautolock -time 1 -locker '~/.i3/lock.sh' &
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
